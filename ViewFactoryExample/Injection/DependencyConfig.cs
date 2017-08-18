@@ -7,6 +7,7 @@ namespace ViewFactoryExample.Injection
         public static IContainer Register()
         {
             var builder = new ContainerBuilder();
+            builder.RegisterModule<MvcModule>();
             builder.RegisterModule<ApplicationModule>();
 
             return builder.Build();

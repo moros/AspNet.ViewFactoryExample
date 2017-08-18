@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ViewFactoryExample.ViewModels.StudentViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<table style="border: 1px solid black;">
+    <tr>
+        <th style="width: 150px; text-align: left;">Name</th>
+        <th style="width: 100px; text-align: left;">Gender</th>
+        <th style="width: 100px; text-align: left;">Grade</th>
+        <th style="width: 300px; text-align: left;">School</th>
+        <th style="width: 100px;"></th>
+    </tr>
+    @foreach (var studentView in Model)
+    {
+        <tr>
+            <td>@studentView.Name</td>
+            <td>@studentView.Gender</td>
+            <td>@studentView.Grade</td>
+            <td>@studentView.School</td>
+            <td>
+                @Html.ActionLink("Detail", "Detail", "Students", new
+                     {
+                         id = studentView.Id
+                     }, null)
+            </td>
+        </tr>
+    }
+</table>

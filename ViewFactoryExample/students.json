@@ -1,0 +1,42 @@
+﻿[
+  {
+    "id": 0,
+    "first_name": "Darryl",
+    "last_name": "Scott",
+    "gender": 0,
+    "grade": 2,
+    "school": "Cascade Elementary"
+  },
+  {
+    "id": 1,
+    "first_name": "Lauren",
+    "last_name": "Bass",
+    "gender": 1,
+    "grade": 2,
+    "school": "Cascade Elementary"
+  },
+  {
+    "id": 2,
+    "first_name": "Francis",
+    "last_name": "Ryan",
+    "gender": 1,
+    "grade": 3,
+    "school": "Cascade Elementary"
+  },
+  {
+    "id": 3,
+    "first_name": "Sidney",
+    "last_name": "Washington",
+    "gender": 1,
+    "grade": 3,
+    "school": "Cascade Elementary"
+  },
+  {
+    "id": 4,
+    "first_name": "Brett",
+    "last_name": "Brewer",
+    "gender": 0,
+    "grade": 3,
+    "school": "Cascade Elementary"
+  }
+]
