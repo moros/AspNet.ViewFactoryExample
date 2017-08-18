@@ -7,7 +7,23 @@ namespace ViewFactoryExample.Entities
     {
         Male = 0,
         Female
-    };
+    }
+
+    public static class GenderExtensions
+    {
+        public static string Abbreviation(this Gender gender)
+        {
+            switch (gender)
+            {
+                case Gender.Male:
+                    return "M";
+                case Gender.Female:
+                    return "F";
+                default:
+                    return string.Empty;
+            }
+        }
+    }
 
     [Serializable]
     [DataContract]
