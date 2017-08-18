@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using ViewFactoryExample.Entities;
 using ViewFactoryExample.Factory;
+using ViewFactoryExample.Others;
 using ViewFactoryExample.ViewModels;
 
 namespace ViewFactoryExample.Controllers
@@ -8,11 +10,11 @@ namespace ViewFactoryExample.Controllers
     public class StudentsController : Controller
     {
         private readonly ViewModelFactory<IEnumerable<StudentViewModel>> _indexViewModelFactory;
-        private readonly ViewModelFactory<StudentViewModel, int> _detailViewModelFactory;
+        private readonly ViewModelFactory<StudentViewModel, Student> _detailViewModelFactory;
 
         public StudentsController(
             ViewModelFactory<IEnumerable<StudentViewModel>> indexViewModelFactory,
-            ViewModelFactory<StudentViewModel, int> detailViewModelFactory)
+            ViewModelFactory<StudentViewModel, Student> detailViewModelFactory)
         {
             _indexViewModelFactory = indexViewModelFactory;
             _detailViewModelFactory = detailViewModelFactory;
@@ -25,7 +27,10 @@ namespace ViewFactoryExample.Controllers
 
         public ActionResult Detail(int id)
         {
-            return View(_detailViewModelFactory.CreateView(id));
+            var client = new StudentClient();
+            var student = client.GetStudent(id);
+
+            return View(_detailViewModelFactory.CreateView(student));
         }
     }
 }

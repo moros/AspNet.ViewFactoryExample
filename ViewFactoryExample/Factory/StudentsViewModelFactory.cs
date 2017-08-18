@@ -25,13 +25,10 @@ namespace ViewFactoryExample.Factory
         }
     }
 
-    public class StudentByIdViewModelFactory : ViewModelFactory<StudentViewModel, int>
+    public class StudentByIdViewModelFactory : ViewModelFactory<StudentViewModel, Student>
     {
-        public override StudentViewModel CreateView(int input)
+        public override StudentViewModel CreateView(Student student)
         {
-            var client = new StudentClient();
-            var student = client.GetStudent(input);
-            
             return new StudentViewModel
             {
                 Id = student.Id,
