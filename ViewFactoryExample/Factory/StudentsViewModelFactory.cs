@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Humanizer;
 using ViewFactoryExample.Entities;
 using ViewFactoryExample.Others;
 using ViewFactoryExample.ViewModels;
@@ -12,26 +13,13 @@ namespace ViewFactoryExample.Factory
         {
             var client = new StudentClient();
             var students = client.GetStudents();
-
-            string DescriptionGender(Gender gender)
-            {
-                switch (gender)
-                {
-                    case Gender.Male:
-                        return "M";
-                    case Gender.Female:
-                        return "F";
-                    default:
-                        return string.Empty;
-                }
-            }
-
+            
             return students.Select(student => new StudentViewModel
             {
                 Id = student.Id,
                 Name = $"{student.LastName}, {student.FirstName}",
-                Gender = DescriptionGender(student.Gender),
-                Grade = student.GradeLevel.ToString(),
+                Gender = student.Gender.Abbreviation(),
+                Grade = $"{student.GradeLevel.Ordinalize()} grade",
                 School = student.SchoolName
             });
         }
@@ -43,26 +31,13 @@ namespace ViewFactoryExample.Factory
         {
             var client = new StudentClient();
             var student = client.GetStudent(input);
-
-            string DescriptionGender(Gender gender)
-            {
-                switch (gender)
-                {
-                    case Gender.Male:
-                        return "M";
-                    case Gender.Female:
-                        return "F";
-                    default:
-                        return string.Empty;
-                }
-            }
-
+            
             return new StudentViewModel
             {
                 Id = student.Id,
                 Name = $"{student.LastName}, {student.FirstName}",
-                Gender = DescriptionGender(student.Gender),
-                Grade = student.GradeLevel.ToString(),
+                Gender = student.Gender.Abbreviation(),
+                Grade = $"{student.GradeLevel.Ordinalize()} grade",
                 School = student.SchoolName
             };
         }
